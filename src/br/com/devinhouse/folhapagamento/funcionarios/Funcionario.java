@@ -1,6 +1,7 @@
 package br.com.devinhouse.folhapagamento.funcionarios;
+import br.com.devinhouse.interfaces.Pagavel;
 
-public abstract class Funcionario {
+public abstract class Funcionario implements Pagavel{
 	private String nome;
 	private String sobreNome;
 	private static int totalDeFuncionarios;
@@ -10,6 +11,12 @@ public abstract class Funcionario {
 		this.sobreNome = sobreNome;
 		totalDeFuncionarios++;
 	}
+	
+	@Override
+	public double obterValorDevido() {
+		return this.calcularSalarioMensal();
+	}
+	
 	
 	public static int getTotalDeFuncionarios() {
 		return totalDeFuncionarios;
